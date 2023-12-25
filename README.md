@@ -30,7 +30,23 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
   -	FactStrategyPlan
     
 **Data Transformation/Cleaning in Power Query Editor**
-  - Remove all table prefixes (V_, Dim, Fact)
+  - Remove all table prefixes (V_, Dim, Fact).
+  - Only keep the following columns listed next to each table and remove other columns (Please see below for the enclosed screenshot of Power BI Data Model):
+    - Account Table: AccountKey, ParentAccountKey, AccountName, AccountType.
+    - Channel Table: ChannelKey, ChannelName.
+    - Date Table: DateKey, CalenderYear, CalenderQuarter, CalenderMonth. Change DateKey to “Date” datatype, Filter CalenderYear only for 2007,2008, and 2009.
+    - Entity table: EntityKey, ParentEntityKey, EntityName, EntityType.
+    - Flag table: Transform - Use first row as headers.
+    - Geography table: GeographyKey, GeographyType, ContinentName, CityName, StateProvinceName, Region CountryName. Select RegionCountryName, right click -> Transform -> Trim. Merge Queries: Geography and Flag Left Outer on RegionCountryName. Expand Flag, only select ImageURL. Uncheck use original table as prefix.
+    - Product Table: ProductKey, ProductName, ProductSubcategoryKey, Manufacturer, BrandName, ClassName..
+    - Product Category Table: ProductCategoryKey, ProductCategoryName.
+    - Product Subcategory Table: ProductSubcategoryKey, ProductSubcategoryName, ProductCategoryKey.
+    - Promotion Table: PromotionKey, PromotionName, PromotionType, StartDate, EndDate. Remove other columns. Change StartDate and EndDate datatype to “Date”.
+    - Sales Table: Remove CurrencyKey, UnitCost, ETLLoadID, LoadDate, UpdateDate. Change DateKey datatype to “Date”.
+    - Scenario Table: ScenarioKey, ScenarioName.
+    - Store Table: StoreKey, GeographyKey, StoreType, StoreName, Status, OpenDate, CloseDate, EmployeeCount, SellingAreaSize. Remove other columns. Change OpenDate and CloseDate datatype to “Date”.
+    - Strategy Plan Table: StrategyPlanKey, DateKey, EntityKey, ScenarioKey, AccountKey, ProductCategoryKey, Amount. Remove other columns. Change DateKey datatype to “Date”. Filter ScenarioKey: 1,2, Filter AccountKey: 4,9,11. 
+
 
 **Power BI Data Model**
 ![PowerBI_DataModel_CONTOSO](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/7d9befce-c61d-4c8d-9d1b-2d83969ba75c)
