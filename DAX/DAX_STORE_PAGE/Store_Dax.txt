@@ -1,0 +1,20 @@
+•	Rent Cost = CALCULATE (SUM ( StrategyPlan[Amount] ),StrategyPlan[AccountKey] = 11, StrategyPlan[ScenarioKey] = 1)
+•	Return Amount = SUM(Sales[ReturnAmount])
+•	Return Amount LY = CALCULATE([Return Amount], DATEADD(‘Date’[DateKey],-1,YEAR))
+•	Return Amount Y/Y = [Return Amount] – [Return Amount LY]
+•	Sales Amount = SUM(Sales[SalesAmount])
+•	Sales Amount(mio) = [Sales Amount]/1000000
+•	Sales Amount Budget = CALCULATE(SUM(StrategyPlan[Amount]), StrategyPlan[AccountKey] = 4, StrategyPlan[ScenarioKey] = 2)
+• Numeric range parameter
+•	Name: Store-Area
+•	Min = 400
+•	Max = 1150
+•	Increment = 10
+• Data View  Parameter-Store-Area - three new columns
+•	Employees-Ideal = 4.9448 * LN (‘Parameter-Store-Area’[Store-Area-Value])-5.037
+•	Employees-Min = 4.5 * LN ('Parameter-Store-Area'[Store-Area Value]) - 5.0537
+•	Employees-Max = 5.5 * LN ('Parameter-Store-Area'[Store-Area Value]) - 5.0537
+• Three new measures within the parameter table, format to 0 decimals
+•	Employees-Ideal-Average = AVERAGE ('Parameter-Store-Area'[Employees-Ideal])
+•	Employees-Max-Average = AVERAGE ('Parameter-Store-Area'[Employees-Max])
+•	Employees-Min-Average = AVERAGE ('Parameter-Store-Area'[Employees-Min])
