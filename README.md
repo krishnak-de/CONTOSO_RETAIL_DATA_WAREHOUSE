@@ -10,23 +10,23 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
 **MS SQL SERVER VIEWS**
 ![image](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/264a5cf5-f6e2-45a1-a6a8-92d87e1b152d)
 
-<sub>Following database objects are used to connect with Power Query Editor in Power BI for data modeling.,/sub>
-  •	V_City
-  •	V_Productlabel
-  •	V_Sales
-  •	V_StoreLabel
-  •	DimAccount
-  •	DimChannel
-  •	DimDate
-  •	DimEntity
-  •	DimGeography
-  •	DimProduct
-  •	DimProductCategory
-  •	DimProductSubcategory
-  •	DimPromotion
-  •	DimScenario
-  •	DimStore
-  •	FactStrategyPlan
+**Following database objects are used to connect with Power Query Editor in Power BI for data modeling.**
+  -	V_City
+  -	V_Productlabel
+  - V_Sales
+  -	V_StoreLabel
+  - DimAccount
+  -	DimChannel
+  -	DimDate
+  -	DimEntity
+  -	DimGeography
+  -	DimProduct
+  -	DimProductCategory
+  -	DimProductSubcategory
+  -	DimPromotion
+  -	DimScenario
+  -	DimStore
+  -	FactStrategyPlan
 
 **Power BI Data Model**
 ![PowerBI_DataModel_CONTOSO](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/7d9befce-c61d-4c8d-9d1b-2d83969ba75c)
@@ -34,25 +34,25 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
 **Data Relationships in Power BI**
   -Fact tables: Sales, Strategy Plan
   -From Sales to
-    •	Channel: ChannelKey
-    •	Date: DateKey
-    •	Product: ProductKey
-    •	Promotion: PromotionKey
-    •	Store: StoreKey
+    -	Channel: ChannelKey
+    -	Date: DateKey
+    -	Product: ProductKey
+    -	Promotion: PromotionKey
+    -	Store: StoreKey
   -From StrategyPlan to
-    •	Account: AccountKey
-    •	Date: DateKey
-    •	Entity: EntityKey
-    •	ProdcutCategory: ProductCateogryKey
-    •	Scenario: ScenarioKey
+    -	Account: AccountKey
+    -	Date: DateKey
+    -	Entity: EntityKey
+    -	ProdcutCategory: ProductCateogryKey
+    -	Scenario: ScenarioKey
 -Dimension Table Relationships
-  •	Entity to Store: EntityName  StoreName
-  •	Product to ProductSubcategory: ProductSubcategoryKey
-  •	ProductLabel to Product: ProductKey
-  •	ProductSubcategory to ProductCategory: ProductCategoryKey
-  •	Store to City: GeographyKey
-  •	Store to Geography: GeographyKey
-  •	StoreLabel to Store: StoreKey
+  -	Entity to Store: EntityName  StoreName
+  -	Product to ProductSubcategory: ProductSubcategoryKey
+  -	ProductLabel to Product: ProductKey
+  -	ProductSubcategory to ProductCategory: ProductCategoryKey
+  -	Store to City: GeographyKey
+  -	Store to Geography: GeographyKey
+  -	StoreLabel to Store: StoreKey
 
 **CONTOSO RETAIL DASHBOARD**
 ![CONTOSO_DASHBOARD](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/adcb28f6-60bc-4156-b620-a78b565aca71)
