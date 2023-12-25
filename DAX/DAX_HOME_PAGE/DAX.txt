@@ -1,0 +1,28 @@
+***Following are measures created for home page***
+•	Net Sales = SUM(Sales[SalesAmount]) – SUM(Sales[ReturnAmount])
+•	Net Sales LY = Calculate([Net Sales], DATEADD(‘Date’[DateKey],-1,YEAR))
+•	Total Cost = SUM(Sales[TotalCost])Total Cost (mio) = [Total Cost]/1000000
+•	Total Cost (mio) = [Total Cost]/1000000
+•	Total Cost Y/Y % = Divide([Total Cost], Calculate([Total Cost], DATEADD(‘Date’[DateKey], -1, YEAR))) -1
+•	Sales Quantity = SUM(Sales[SalesQuantity])
+•	Sales Quantity (mio) = [Sales Quantity]/1000000
+•	Sales Quantity LY = Calculate([Sales Quantity], DATEADD(‘Date’[DateKey], -1, YEAR))
+•	Sales Quantity Y/Y % = DIVIDE([Sales Quantity], [Sales Quantity LY]) -1
+•	Gross Profit = [Net Sales] – [Total Cost]
+•	Gross Profit (mio) = [Gross Profit]/1000000
+•	Gross Profit LY = Calculate([Gross Profit], DATEADD(‘Date’[DateKey], -1, YEAR))
+•	Gross Profit Y/Y % = DIVIDE([Gross Profit (mio)], Calculate([Gross Profit (mio)], DATEADD(‘Date’[DateKey], -1, YEAR))) – 1
+•	Gross Margin % = Divide([Gross Profit], [Net Sales])
+•	Gross Margin LY %  = Calculate([Gross Margin %], DATEADD(‘Date’[DateKey], -1, YEAR))
+•	Store = Calculate(DISTINCTCOUNT(Store[StoreKey]), CROSSFILTER(Sales[StoreKey], Store[StoreKey], both))
+•	Store LY = Calculate([Store], DATEADD(‘Date’[DateKey], -1, YEAR))
+•	Store Area = Calculate(SUM(Store[SellingAreaSize]), CROSSFILTER(Sales[StoreKey], Store[StoreKey], BOTH))
+•	Store Area Y/Y % = DIVIDE([Store Area], Calculate([Store Area], DATEADD(‘Date’[DateKey], -1, YEAR))) -1 
+•	Employees = Calculate(SUM(Store[EmployeeCount]), CROSSFILTER(Sales[StoreKey], Store[StoreKey], BOTH))
+•	Employees Y/Y % = DIVIDE([Employees], Calculate([Employees], DATEADD(‘Date’[DateKey], -1, YEAR))) -1
+•	SKUs=Calculate(DISTINCTCOUNT(‘Product’[ProductKey]),CROSSFILTER(Sales[ProductKey], ‘Product’[ProductKey], BOTH))
+•	SKUs LY = Calculate([SKUs], DATEADD(‘Date’[DateKey], -1, YEAR))
+•	Brands=Calculate(DISTINCTCOUNT(‘Product’[BrandName]),CROSSFILTER(Sales[ProductKey],  ‘Product’[ProductKey], BOTH))
+•	Brands Y/Y % = DIVIDE([Brands], CALCULATE([Brands], DATEADD(‘Date’[DateKey], -1,YEAR))) - 1
+•	Categories = CALCULATE (COUNT (ProductCategory[ProductCategoryKey] ),CROSSFILTER ( ProductSubcategory[ProductCategoryKey], ProductCategory[ProductCategoryKey], BOTH ), CROSSFILTER('Product'[ProductSubcategoryKey],ProductSubcategory[ProductSubcategoryKey], BOTH ), CROSSFILTER ( Sales[ProductKey], 'Product'[ProductKey], BOTH ))
+•	CategoriesY/Y%=DIVIDE([Categories],CALCULATE([Categories], DATEADD(‘Date’[DateKey], -1, YEAR))) -1 
