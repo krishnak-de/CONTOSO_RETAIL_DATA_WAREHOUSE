@@ -1,0 +1,3 @@
+•	Cities=CALCUALTE(DISTINCTCOUNT(Geography[CityName]),CROSSFILTER(Geography[GeographyKey],Store[GeographyKey],BOTH),CROSSFILTER(Sales[StoreKey],Store[StoreKey], BOTH))
+•	Continents=CALCUALTE(DISTINCTCOUNT(Geography[ContinentName]),CROSSFILTER(Geography[GeographyKey],Store[GeographyKey],BOTH),CROSSFILTER(Sales[StoreKey],Store[StoreKey], BOTH))
+•	Countries=CALCUALTE(DISTINCTCOUNT(Geography[RegionCountryName]),CROSSFILTER(Geography[GeographyKey],Store[GeographyKey],BOTH),CROSSFILTER(Sales[StoreKey],Store[StoreKey], BOTH))
