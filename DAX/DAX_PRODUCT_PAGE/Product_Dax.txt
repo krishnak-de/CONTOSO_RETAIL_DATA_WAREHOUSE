@@ -1,0 +1,71 @@
+•	Subcategories=Calculate(Distinctcount(ProductSubcategory[ProductSubcategoryKey]), CROSSFILTER(‘Product’[ProductSubcategoryKey],ProductSubcategory[ProductSubcategoryKey],Both), CROSSFILTER(Sales[ProductKey], ‘Product’[ProductKey], Both))
+•	Rank = 
+o	VAR select_type1 = SELECTEDVALUE ( 'Parameter-Product'[Parameter-Product-Order] ) 
+o	VAR select_type2 = SELECTEDVALUE ( 'Parameter-Measure'[Parameter-Measure-Order] )
+o	VAR value11 = RANKX ( ALLSELECTED ( 'ProductCategory'[ProductCategoryName] ), [Net Sales] )
+o	VAR value12 = RANKX( ALLSELECTED( 'ProductSubcategory' [ProductSubcategoryName] ), [Net Sales] )
+o	VAR value13 = RANKX ( ALLSELECTED ( 'Product'[ProductKey] ), [Net Sales] )
+o	VAR value21 = RANKX ( ALLSELECTED ( 'ProductCategory'[ProductCategoryName] ), [Gross Profit] )
+o	VARvalue22=RANKX(ALLSELECTED('ProductSubcategory'[ProductSubcategoryName] ), [Gross Profit] )
+o	VAR value23 = RANKX ( ALLSELECTED ( 'Product'[ProductKey] ), [Gross Profit] )
+o	VAR value31 = RANKX ( ALLSELECTED ( 'ProductCategory'[ProductCategoryName] ), [Sales Quantity] )
+o	VARvalue32=RANKX(ALLSELECTED('ProductSubcategory'[ProductSubcategoryName] ), [Sales Quantity] )
+o	VAR value33 = RANKX ( ALLSELECTED ( 'Product'[ProductKey] ), [Sales Quantity] )
+o	RETURN SWITCH ( TRUE (),
+	AND ( select_type1 = 0, select_type2 = 0 ), value11,
+	AND ( select_type1 = 1, select_type2 = 0 ), value12,
+	AND ( select_type1 = 2, select_type2 = 0 ), value13,
+	AND ( select_type1 = 0, select_type2 = 1 ), value21,
+	AND ( select_type1 = 1, select_type2 = 1 ), value22,
+	AND ( select_type1 = 2, select_type2 = 1 ), value23,
+	AND ( select_type1 = 0, select_type2 = 2 ), value31,
+	AND ( select_type1 = 1, select_type2 = 2 ), value32,
+	AND ( select_type1 = 2, select_type2 = 2 ), value33)
+
+•	Total = 
+o	VAR select_type1 = SELECTEDVALUE ( 'Parameter-Product'[Parameter-Product-Order] )
+o	VAR select_type2 = SELECTEDVALUE ( 'Parameter-Measure'[Parameter-Measure-Order] )
+o	VAR value11 = CALCULATE ( [Net Sales], ALL('ProductCategory'[ProductCategoryName] ) )
+o	VAR value12 = CALCULATE ( [Net Sales], ALL('ProductSubCategory'[ProductSubCategoryName] ) )
+o	VAR value13 = CALCULATE ( [Net Sales], ALL('Product'[ProductKey] ) )
+o	VAR value21 = CALCULATE ( [Gross Profit], ALL('ProductCategory'[ProductCategoryName] ) )
+o	VAR value22 = CALCULATE ( [Gross Profit], ALL('ProductSubCategory'[ProductSubCategoryName] ) )
+o	VAR value23 = CALCULATE ( [Gross Profit], ALL('Product'[ProductKey] ) )
+o	VAR value31 = CALCULATE ( [Sales Quantity], ALL('ProductCategory'[ProductCategoryName] ) )
+o	VAR value32 = CALCULATE ( [Sales Quantity], ALL('ProductSubCategory'[ProductSubCategoryName] ) )
+o	VAR value33 = CALCULATE ( [Sales Quantity], ALL('Product'[ProductKey] ) )
+o	RETURN SWITCH ( TRUE (),
+	AND ( select_type1 = 0, select_type2 = 0 ), value11,
+	AND ( select_type1 = 1, select_type2 = 0 ), value12,
+	AND ( select_type1 = 2, select_type2 = 0 ), value13,
+	AND ( select_type1 = 0, select_type2 = 1 ), value21,
+	AND ( select_type1 = 1, select_type2 = 1 ), value22,
+	AND ( select_type1 = 2, select_type2 = 1 ), value23,
+	AND ( select_type1 = 0, select_type2 = 2 ), value31,
+	AND ( select_type1 = 1, select_type2 = 2 ), value32,
+	AND ( select_type1 = 2, select_type2 = 2 ), value33)
+
+•	Running Total = 
+o	VAR select_type1 = SELECTEDVALUE ( 'Parameter-Product'[Parameter-Product Order] )
+o	VAR select_type2 = SELECTEDVALUE ( 'Parameter-Measure'[Parameter-Measure-Order] )
+o	VAR value11 = CALCULATE ( [Net Sales], TOPN([Rank], ALL('ProductCategory'[ProductCategoryName]), [Net Sales] ) )
+o	VAR value12 = CALCULATE ( [Net Sales], TOPN([Rank], ALL('ProductSubCategory'[ProductSubCategoryName]), [Net Sales] ) )
+o	VAR value13 = CALCULATE ( [Net Sales], TOPN([Rank], ALL('Product'[ProductKey]), [Net Sales] ) )
+o	VAR value21 = CALCULATE ( [Gross Profit], TOPN([Rank], ALL('ProductCategory'[ProductCategoryName]), [Gross Profit] ) )
+o	VAR value22 = CALCULATE ( [Gross Profit], TOPN([Rank], ALL('ProductSubCategory'[ProductSubCategoryName]), [Gross Profit] ) )
+o	VAR value23 = CALCULATE ( [Gross Profit], TOPN([Rank], ALL('Product'[ProductKey]), [Gross Profit] ) )
+o	VAR value31 = CALCULATE ( [Sales Quantity], TOPN([Rank], ALL('ProductCategory'[ProductCategoryName]), [Sales Quantity] ) )
+o	VAR value32 = CALCULATE ( [Sales Quantity], TOPN([Rank], ALL('ProductSubCategory'[ProductSubCategoryName]), [Sales Quantity] ) )
+o	VAR value33 = CALCULATE ( [Sales Quantity], TOPN([Rank], ALL('Product'[ProductKey]), [Sales Quantity] ) )
+o	RETURN SWITCH ( TRUE (),
+	AND ( select_type1 = 0, select_type2 = 0 ), value11,
+	AND ( select_type1 = 1, select_type2 = 0 ), value12,
+	AND ( select_type1 = 2, select_type2 = 0 ), value13,
+	AND ( select_type1 = 0, select_type2 = 1 ), value21,
+	AND ( select_type1 = 1, select_type2 = 1 ), value22,
+	AND ( select_type1 = 2, select_type2 = 1 ), value23,
+	AND ( select_type1 = 0, select_type2 = 2 ), value31,
+	AND ( select_type1 = 1, select_type2 = 2 ), value32,
+	AND ( select_type1 = 2, select_type2 = 2 ), value33)
+
+•	Pareto % = DIVIDE ( [Running Total], [Total] )
