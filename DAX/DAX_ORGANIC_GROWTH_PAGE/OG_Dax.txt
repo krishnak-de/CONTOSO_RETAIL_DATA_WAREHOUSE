@@ -1,0 +1,9 @@
+•	Net Sales YTD = TOTALYTD([Net Sales], DATESYTD(‘Date’[DateKey]))
+•	Net Sales YTD LY = CALCULATE( [Net Sales YTD], SAMEPERIODLASTYEAR ( ‘Date’[DateKey]))
+•	Sales Quantity YTD = TOTALYTD([Sales Quantity], DATESYTD(‘Date’[DateKey]))
+•	Sales Quantity YTD Ly = CALCULATE ([Sales Quantity YTD], SAMEPERIODLASTYEAR ( ‘Date’[DateKey]))
+•	OG YTD % = DIVIDE ([Net Sales YTD], [Net Sales YTD LY]) – 1
+•	Pricing YTD % = DIVIDE([Net Sales YTD], [Net Sales YTD LY]) – DIVIDE([Sales Quantity YTD], [Sales Quantity YTD LY]
+•	Pricing Impact = [Sales Quantity] * (DIVIDE([Net Sales], [Sales Quantity]) – DIVIDE([Net Sales LY], [Sales Quantity LY]))
+•	RIG Impact = ([Sales Quantity] – [Sales Quantity LY]) * DIVIDE([Net Sales LY], [Sales Quantity LY])
+•	RIG YTD % = DIVIDE([Sales Quantity YTD], [Sales Quantity YTD Ly]) – 1
