@@ -1,0 +1,2 @@
+•	Average Unit Price = (SUM( Sales[SalesAmount]) – Sum( Sales[ReturnAmount])) / (SUM(Sales[SalesQuantity]) – SUM(Sales[ReturnQuantity]))
+•	Average Unit Price LY =  CALCULATE ( [Average Unit Price], DATEADD ( 'Date'[Datekey], -1, YEAR ) )
