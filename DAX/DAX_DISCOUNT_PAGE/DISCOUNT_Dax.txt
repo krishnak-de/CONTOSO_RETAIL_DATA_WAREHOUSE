@@ -1,0 +1,15 @@
+•	Discount Amount = SUM(Sales[DiscountAmount])
+•	Discount % = DIVIDE ([Discount Amount], SUMX (Sales, Sales[UnitPrice] * Sales[DiscountQuantity]))
+•	Discount Quantity = SUM(Sales[DiscountQuantity])
+•	Promotions = CALCULATE (DISTINCTCOUNT (Sales[PromotionKey]), CROSSFILTER (Sales[PromotionKey], Promotion[PromotionKey], BOTH))
+• Parameter-Store-Sales
+  •	Column name to: Store-Sales-Target
+  •	Measure name to: Store-Sales-Target-Value
+•	Add columns:
+  • Discount-Budget-Ideal = -1e-19*POWER([Store-Sales-Target-Value],3)+3e-11*POWER([Store-Sales-Target-Value],2)+0.0175*[Store-Sales-Target-Value]-11097
+  •	Discount-Budget-Min = -1e-19*POWER([Store-Sales-Target-Value],3)+3e-11*POWER([Store-Sales-Target-Value],2)+0.0170*[Store-Sales-Target-Value]-11097
+  •	Discount-Budget-Max = -1e-19*POWER([Store-Sales-Target-Value],3)+3e-11*POWER([Store-Sales-Target-Value],2)+0.018*[Store-Sales-Target-Value]-11097
+•	Add measures:
+  •	Discount-Budget-Ideal-Store = AVERAGE ( 'Parameter-Store-Sales'[Discount-Budget-Ideal] )
+  •	Discount-Budget-Max-Store = AVERAGE ( 'Parameter-Store-Sales'[Discount-Budget-Max] )
+  •	Discount-Budget-Min-Store = AVERAGE ( 'Parameter-Store-Sales'[Discount-Budget-Min] )
