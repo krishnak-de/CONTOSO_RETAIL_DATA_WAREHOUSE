@@ -32,7 +32,7 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
 ![PowerBI_DataModel_CONTOSO](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/7d9befce-c61d-4c8d-9d1b-2d83969ba75c)
 
 **Data Relationships in Power BI**
-  -Fact tables: Sales, Strategy Plan
+  <sub>Fact tables: Sales, Strategy Plan</sub>
   -From Sales to
     -	Channel: ChannelKey
     -	Date: DateKey
@@ -45,6 +45,7 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
     -	Entity: EntityKey
     -	ProdcutCategory: ProductCateogryKey
     -	Scenario: ScenarioKey
+    
 -Dimension Table Relationships
   -	Entity to Store: EntityName  StoreName
   -	Product to ProductSubcategory: ProductSubcategoryKey
