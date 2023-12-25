@@ -26,3 +26,12 @@
 •	Brands Y/Y % = DIVIDE([Brands], CALCULATE([Brands], DATEADD(‘Date’[DateKey], -1,YEAR))) - 1
 •	Categories = CALCULATE (COUNT (ProductCategory[ProductCategoryKey] ),CROSSFILTER ( ProductSubcategory[ProductCategoryKey], ProductCategory[ProductCategoryKey], BOTH ), CROSSFILTER('Product'[ProductSubcategoryKey],ProductSubcategory[ProductSubcategoryKey], BOTH ), CROSSFILTER ( Sales[ProductKey], 'Product'[ProductKey], BOTH ))
 •	CategoriesY/Y%=DIVIDE([Categories],CALCULATE([Categories], DATEADD(‘Date’[DateKey], -1, YEAR))) -1 
+• VAR YEARFILTER = CONCATENATEX(VALUES('Date'[CalendarYear]),'Date'[CalendarYear],",")
+•	VAR CHANNELFILTER = CONCATENATEX(VALUES(Channel[ChannelName]),Channel[ChannelName],",")
+•	VAR CONTINENTFILTER = CONCATENATEX(VALUES(Geography[ContinentName]),Geography[ContinentName],",")
+•	VAR CATEGORYFILTER = CONCATENATEX(VALUES(ProductCategory[ProductCategoryName]),ProductCategory[ProductCategoryName],",")
+•	VAR SUBCATEGORYFILTER = CONCATENATEX(VALUES(ProductSubcategory[ProductSubcategoryName]),ProductSubcategory[ProductSubcategoryName],",")
+•	VAR PRODUCTFILTER = CONCATENATEX(VALUES('Product'[ProductName]),'Product'[ProductName],",")
+•	VAR STOREFILTER = CONCATENATEX(VALUES(Store[StoreName]),Store[StoreName],",")
+•	VAR WHOLEFILTER = IF(ISFILTERED('Date'[CalendarYear]),"Year="&YEARFILTER)	& IF(ISFILTERED(Channel[ChannelName])," And "&"Channel="&CHANNELFILTER) & IF(ISFILTERED(Geography[ContinentName])," And "&"Continent="&CONTINENTFILTER)	& IF(ISFILTERED(ProductCategory[ProductCategoryName])," And "&"Category="&CATEGORYFILTER) & IF(ISFILTERED(ProductSubcategory[ProductSubcategoryName])," And "&"SubCategory="&SUBCATEGORYFILTER) & IF(ISFILTERED('Product'[ProductName])," And "&"Product="&PRODUCTFILTER) & IF(ISFILTERED(Store[StoreName])," And "&"Store="&STOREFILTER) RETURN IF(ISBLANK(WHOLEFILTER),"No valid selections",WHOLEFILTER)
+
