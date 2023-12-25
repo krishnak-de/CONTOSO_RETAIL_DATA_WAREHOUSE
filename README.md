@@ -7,10 +7,11 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
 **MS SQL SERVER TABLES**
 ![SQLSERVER_TABLES](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/0642f0c0-b55c-4139-b593-419bb9c9c6c1)
 
-**MS SQL SERVER VIEWS**
+**MS SQL SERVER VIEWS - SQL code in Contoso.sql file from line 199 - 308 will create the following views upon execution**
 ![image](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/264a5cf5-f6e2-45a1-a6a8-92d87e1b152d)
 
-**Following database objects are used to connect with Power Query Editor in Power BI for data modeling.**
+
+**Following database objects are used to get data from MS SQL SERVER into Power BI Power Query Editor for data modeling.**
   -	V_City
   -	V_Productlabel
   - V_Sales
@@ -27,6 +28,9 @@ Power BI is used for interactive reports, KPI display on the left to primary ana
   -	DimScenario
   -	DimStore
   -	FactStrategyPlan
+    
+**Data Transformation/Cleaning in Power Query Editor**
+  - Remove all table prefixes (V_, Dim, Fact)
 
 **Power BI Data Model**
 ![PowerBI_DataModel_CONTOSO](https://github.com/krishnak-de/CONTOSO_RETAIL_DATA_WAREHOUSE/assets/130612282/7d9befce-c61d-4c8d-9d1b-2d83969ba75c)
