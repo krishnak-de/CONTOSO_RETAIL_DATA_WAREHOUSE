@@ -1,0 +1,3 @@
+•	Manufactures=CALCULATE(DISTINCTCOUNT(‘Product’[Manufacture]),CROSSFILTER(Sales[ProductKey], ‘Product’[ProductKey], BOTH)) 
+•	Return Quantity = SUM(Sales[ReturnQuantity])
+•	Return % = DIVIDE([Return Quantity], [Sales Quantity])
