@@ -1,0 +1,1 @@
+	Salary Cost = CALCULATE(SUM(StrategyPlan[Amount]), StrategyPlan[AccountKey] = 9, StrategyPlan[ScenarioKey] = 1)
